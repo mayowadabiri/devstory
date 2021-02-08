@@ -1,16 +1,156 @@
-html,
-body {
-  padding: 0;
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
+  padding: 0;
   box-sizing: border-box;
 }
+
+html {
+  font-size: 100%;
+  font-family: "Roboto", sans-serif;
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100%;
+}
+body > * {
+  height: 100%;
+}
+
+.layout {
+  height: 100%;
+}
+
+.mb-bg {
+  margin-bottom: 6rem;
+}
+
+.mb-md {
+  margin-bottom: 4rem;
+}
+
+.mb-sm {
+  margin-bottom: 2rem;
+}
+
+.mb-xsm {
+  margin-bottom: 1rem;
+}
+
+.mt-bg {
+  margin-top: 6rem;
+}
+
+.mt-md {
+  margin-top: 4rem;
+}
+
+.mt-sm {
+  margin-top: 2rem;
+}
+
+.mt-xsm {
+  margin-top: 1rem;
+}
+
+.mr-bg {
+  margin-right: 6rem;
+}
+
+.mr-md {
+  margin-right: 4rem;
+}
+
+.mr-sm {
+  margin-right: 2rem;
+}
+
+.ml-bg {
+  margin-left: 6rem;
+}
+
+.ml-md {
+  margin-left: 4rem;
+}
+
+.ml-sm {
+  margin-left: 2rem;
+}
+
+.ma {
+  margin: auto;
+}
+
+.ta {
+  text-align: center;
+}
+
+.header {
+  width: 100%;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80px;
+  box-shadow: 10px 10px 30px #ccc;
+}
+.header__container {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__brand {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+.header__brand a {
+  text-decoration: none;
+  color: black;
+}
+
+.nav {
+  position: relative;
+  height: 100%;
+}
+.nav__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav__item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.nav__item:not(:last-child) {
+  margin-right: 2rem;
+}
+.nav__link {
+  text-decoration: none;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  color: #000;
+  font-weight: 500;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+.nav__link:hover {
+  background-color: black;
+  color: white;
+}
+
+/*# sourceMappingURL=globals.css.map */

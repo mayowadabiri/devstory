@@ -1,0 +1,30 @@
+.service {
+  border: 1px solid #eff2f8;
+  border-radius: 10px;
+  padding-bottom: 1.5rem;
+}
+.service-container {
+  width: 90%;
+  padding: 1rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.service-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  padding: 3.3rem;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+}
+.service-content {
+  text-align: center;
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}

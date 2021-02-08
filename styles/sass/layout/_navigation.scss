@@ -1,0 +1,39 @@
+.nav {
+  position: relative;
+  height: 100%;
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 100%;
+    @include flex;
+    align-items: center;
+  }
+
+  &__item {
+    height: 100%;
+    //   align-self: stretch;
+    display: flex;
+    align-items: center;
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: $color-secondary;
+    font-weight: 500;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+
+    &:hover{
+        background-color: black;
+        color: white;
+    }
+  }
+}
