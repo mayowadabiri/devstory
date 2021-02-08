@@ -27,26 +27,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout>
-        <div className="landing">
-          <div className="landing__container">
-            <Image src="/speed.png" alt="speed" layout="fill" />
-            <div className="landing__content">
-              <h1 className="landing__text mb-bg">
-                <SplitText
-                  wordPoses={wordPoses}
-                  initialPose="exit"
-                  pose="enter"
-                  charPoses={charPoses}
-                >
-                  Let the world know your developer's story today
-                </SplitText>
-              </h1>
-              <Button>Get Started</Button>
+      {/* <Layout> */}
+      <div className="landing">
+        <div className="landing__container">
+          <Image src="/speed.png" alt="speed" layout="fill" />
+          <div className="landing__content">
+            <h1 className="landing__text mb-bg">
+              <SplitText
+                wordPoses={wordPoses}
+                initialPose="exit"
+                pose="enter"
+                charPoses={charPoses}
+              >
+                Let the world know your developer's story today
+              </SplitText>
+            </h1>
+            <div className="landing__button">
+
+            <Button>Get Started</Button>
             </div>
           </div>
         </div>
-      </Layout>
+      </div>
+      {/* </Layout>/ */}
     </div>
   );
 }

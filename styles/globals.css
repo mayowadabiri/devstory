@@ -234,7 +234,7 @@ body {
   padding: 1rem;
 }
 .nav__link:hover {
-  background-color: black;
+  background-color: #5C9210;
   color: white;
 }
 
@@ -258,6 +258,10 @@ body {
   letter-spacing: 20px;
   text-transform: uppercase;
   line-break: normal;
+}
+.landing__button {
+  width: 10%;
+  margin: auto;
 }
 
 .login {

@@ -192,7 +192,7 @@ const Register = () => {
         <title>Register</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
+      {/* <Layout> */}
         <div className="register mb-md">
           <div className="register__container">
             <div className="register__box">
@@ -210,7 +210,7 @@ const Register = () => {
             </div>
           </div>
         </div>
-      </Layout>
+      {/* </Layout> */}
     </div>
   );
 };

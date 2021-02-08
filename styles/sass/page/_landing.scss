@@ -6,11 +6,11 @@
     width: 100%;
     height: 100%;
   }
-  
+
   &__content {
-      position: absolute;
-      bottom: 0;
-      text-align: center;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
   }
 
   &__text {
@@ -20,6 +20,10 @@
     letter-spacing: 20px;
     text-transform: uppercase;
     line-break: normal;
-    
+  }
+
+  &__button {
+    width: 10%;
+    margin: auto;
   }
 }

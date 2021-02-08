@@ -90,7 +90,7 @@ const Login = () => {
         <title>Login</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Layout>
+      {/* <Layout> */}
         <div className="login">
           <div className="login__container">
             <div className="login__box">
@@ -105,7 +105,7 @@ const Login = () => {
             </div>
           </div>
         </div>
-      </Layout>
+      {/* </Layout> */}
     </div>
   );
 };
