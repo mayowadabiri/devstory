@@ -29,6 +29,8 @@ body {
   font-size: 2rem;
   letter-spacing: 5px;
   color: #5C9210;
+  font-weight: 400;
+  text-transform: uppercase;
 }
 
 .mb-bg {
@@ -109,8 +111,7 @@ body {
 
 .form {
   padding: 4rem 0;
-  width: 900px;
-  max-width: 90%;
+  width: 100%;
   box-shadow: 1px 3px 80px -20px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 }
@@ -145,6 +146,13 @@ body {
 }
 .form__input:focus {
   outline: none;
+}
+.form__valid {
+  border: 1px solid green;
+}
+.form__invalid {
+  border: 1px solid red !important;
+  background-color: #fda49a;
 }
 
 .header {
@@ -245,16 +253,24 @@ body {
   align-items: center;
   justify-content: center;
 }
+.login__box {
+  width: 600px;
+  max-width: 90%;
+}
 
 .register {
   width: 100%;
-  margin-top: 400px;
+  margin-top: 12.5rem;
 }
 .register__container {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.register__box {
+  width: 800px;
+  max-width: 90%;
 }
 
 /*# sourceMappingURL=globals.css.map */

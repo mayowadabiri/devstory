@@ -4,8 +4,17 @@ import { useState } from "react";
 import { Button } from "../components/button";
 import Input from "../components/input";
 import Layout from "../components/layout";
+import { handleBlur, inputChangeHandler } from "../helpers/handler";
+import {
+  URLChecker,
+  confirmPassword,
+  email,
+  fullname,
+  password,
+  username,
+} from "../helpers/validation";
 
-const Login = () => {
+const Register = () => {
   const [registerForm, setRegisterForm] = useState({
     fullName: {
       elementType: "input",
@@ -14,8 +23,12 @@ const Login = () => {
         type: "text",
         placeholder: "Full Name",
       },
-
+      validations: [fullname],
       value: "",
+      blur: false,
+      touched: false,
+      isValid: false,
+      errorMsg: "",
     },
     username: {
       elementType: "input",
@@ -24,8 +37,12 @@ const Login = () => {
         type: "text",
         placeholder: "Username",
       },
-
+      validations: [username],
       value: "",
+      blur: false,
+      touched: false,
+      isValid: false,
+      errorMsg: "",
     },
     email: {
       elementType: "input",
@@ -35,6 +52,11 @@ const Login = () => {
         placeholder: "Email",
       },
       value: "",
+      validations: [email],
+      blur: false,
+      touched: false,
+      isValid: false,
+      errorMsg: "",
     },
     twitter: {
       elementType: "input",
@@ -43,7 +65,7 @@ const Login = () => {
         type: "url",
         placeholder: "Your twitter handle",
       },
-
+      validations: [URLChecker],
       value: "",
     },
     github: {
@@ -54,6 +76,11 @@ const Login = () => {
         placeholder: "Github Link",
       },
       value: "",
+      validations: [URLChecker],
+      blur: false,
+      touched: false,
+      isValid: false,
+      errorMsg: "",
     },
     linkedIn: {
       elementType: "input",
@@ -63,6 +90,11 @@ const Login = () => {
         placeholder: "LinkedIn Link",
       },
       value: "",
+      validations: [URLChecker],
+      blur: false,
+      touched: false,
+      isValid: false,
+      errorMsg: "",
     },
     gender: {
       elementType: "select",
@@ -75,6 +107,11 @@ const Login = () => {
         ],
       },
       value: "",
+      validations: [],
+      blur: false,
+      touched: false,
+      isValid: false,
+      errorMsg: "",
     },
     password: {
       elementType: "input",
@@ -84,6 +121,11 @@ const Login = () => {
         placeholder: "Password",
       },
       value: "",
+      validations: [password],
+      blur: false,
+      touched: false,
+      isValid: false,
+      errorMsg: "",
     },
     confirmPassword: {
       elementType: "input",
@@ -93,8 +135,25 @@ const Login = () => {
         placeholder: "Confirm Your Password",
       },
       value: "",
+      validations: [confirmPassword],
+      blur: false,
+      touched: false,
+      isValid: false,
+      errorMsg: "",
     },
   });
+
+  const [formValid, setFormValid] = useState(false);
+
+  const [clicked, setClicked] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setClicked(true);
+    console.log(registerForm);
+    console.log(formValid);
+    console.log(clicked);
+  };
 
   let formArray = [];
   for (let key in registerForm) {
@@ -105,10 +164,27 @@ const Login = () => {
   }
   let form = formArray.map((form) => (
     <Input
-      elemenType={form.config.elemenType}
+      key={form.id}
+      elementType={form.config.elementType}
       config={form.config.elementConfig}
       value={form.config.value}
       label={form.config.label}
+      onchange={(event) =>
+        inputChangeHandler(
+          event,
+          form.id,
+          registerForm,
+          setRegisterForm,
+          setFormValid
+        )
+      }
+      onblur={() => handleBlur(form.id, registerForm, setRegisterForm)}
+      blur={form.config.blur}
+      formIsValid={formValid}
+      isValid={form.config.isValid}
+      clicked={clicked}
+      blur={form.config.blur}
+      msg={form.config.errorMsg}
     />
   ));
 
@@ -119,15 +195,17 @@ const Login = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Layout>
-        <div className="register">
+        <div className="register mb-md">
           <div className="register__container">
-            <form className="form">
-              <h2 className="title">Register</h2>
-              <div className="form__container">
-                {form}
-                <Button>Register</Button>
-              </div>
-            </form>
+            <div className="register__box">
+              <form className="form">
+                <h2 className="title">Register</h2>
+                <div className="form__container">
+                  {form}
+                  <Button onclick={handleSubmit}>Register</Button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </Layout>
@@ -135,4 +213,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

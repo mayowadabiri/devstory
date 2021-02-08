@@ -1,7 +1,6 @@
 .form {
   padding: 4rem 0;
-  width: 900px;
-  max-width: 90%;
+  width: 100%;
   box-shadow: 1px 3px 80px -20px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
 
@@ -41,5 +40,13 @@
     &:focus {
       outline: none;
     }
+  }
+  &__valid {
+    border: 1px solid green;
+  }
+
+  &__invalid {
+    border: 1px solid red !important;
+    background-color: #fda49a;
   }
 }

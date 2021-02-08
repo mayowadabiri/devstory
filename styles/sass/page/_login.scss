@@ -8,4 +8,9 @@
     align-items: center;
     justify-content: center;
   }
+
+  &__box{
+    width: 600px;
+    max-width: 90%;
+  }
 }

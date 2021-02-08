@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Button } from "../components/button";
 import Input from "../components/input";
 import Layout from "../components/layout";
+import { handleBlur, inputChangeHandler } from "../helpers/handler";
+import { username, password } from "../helpers/validation";
 
 const Login = () => {
   const [loginForm, setLoginForm] = useState({
@@ -14,18 +16,41 @@ const Login = () => {
         type: "text",
         placeholder: "Username",
       },
+      validations: [username],
       value: "",
+      blur: false,
+      touched: false,
+      isValid: false,
+      errorMsg: "",
     },
     password: {
       elemenType: "input",
       label: "Password",
       elementConfig: {
         type: "password",
-        placeholder: "Password",
+        placeholder:
+          "Must be 8 characters long including one number and alphanumeric",
       },
       value: "",
+      validations: [password],
+      blur: false,
+      touched: false,
+      isValid: false,
+      errorMsg: "",
     },
   });
+
+  const [formValid, setFormValid] = useState(false);
+
+  const [clicked, setClicked] = useState(false);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setClicked(true);
+    console.log(loginForm);
+    console.log(formValid);
+    console.log(clicked);
+  };
 
   let formArray = [];
   for (let key in loginForm) {
@@ -36,10 +61,27 @@ const Login = () => {
   }
   let form = formArray.map((form) => (
     <Input
+      key={form.id}
       elemenType={form.config.elemenType}
       config={form.config.elementConfig}
       value={form.config.value}
       label={form.config.label}
+      onchange={() =>
+        inputChangeHandler(
+          event,
+          form.id,
+          loginForm,
+          setLoginForm,
+          setFormValid
+        )
+      }
+      onblur={() => handleBlur(form.id, loginForm, setLoginForm)}
+      blur={form.config.blur}
+      formIsValid={formValid}
+      isValid={form.config.isValid}
+      clicked={clicked}
+      blur={form.config.blur}
+      msg={form.config.errorMsg}
     />
   ));
 
@@ -52,14 +94,15 @@ const Login = () => {
       <Layout>
         <div className="login">
           <div className="login__container">
-            <form className="form">
-              <h2 className="title">Welcome Back</h2>
-              <div className="form__container">
-                {form}
-
-                <Button>Login</Button>
-              </div>
-            </form>
+            <div className="login__box">
+              <form className="form">
+                <h2 className="title">Welcome Back</h2>
+                <div className="form__container">
+                  {form}
+                  <Button onclick={handleSubmit}>Login</Button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </Layout>

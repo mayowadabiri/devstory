@@ -1,16 +1,36 @@
-import Layout from "./layout";
-
-const Input = ({ elementType, config, value, onchange, label }) => {
+const Input = ({
+  elementType,
+  config,
+  value,
+  onchange,
+  label,
+  blur,
+  formIsValid,
+  clicked,
+  isValid,
+  onblur,
+  msg,
+}) => {
+  console.log(elementType)
+  let error;
+  let inputClasses = ["form__input"];
+  if ((blur && !isValid) || (!isValid && !formIsValid && clicked)) {
+    inputClasses.push("form__invalid");
+    error = msg;
+  } else if (isValid && blur) {
+    inputClasses.push("form__valid");
+  }
   let inputElement;
   switch (elementType) {
     case "input":
       inputElement = (
         <input
-          className="form__input"
+          className={inputClasses.join(" ")}
           {...config}
           value={value}
           onChange={onchange}
           name={label}
+          onBlur={onblur}
         />
       );
       break;
@@ -22,13 +42,19 @@ const Input = ({ elementType, config, value, onchange, label }) => {
           value={value}
           onChange={onchange}
           name={label}
-          className="form__input"
+          className={inputClasses.join(" ")}
+          onBlur={onblur}
         ></textarea>
       );
       break;
     case "select":
       inputElement = (
-        <select value={value} onChange={onchange} className="form__input">
+        <select
+          value={value}
+          onChange={onchange}
+          className={inputClasses.join(" ")}
+          onBlur={onblur}
+        >
           {config.options.map((option) => (
             <option key={option.value} value={option.value}>
               {option.displayValue}
@@ -40,21 +66,35 @@ const Input = ({ elementType, config, value, onchange, label }) => {
     default:
       inputElement = (
         <input
-          className="form__input"
+          className={inputClasses.join(" ")}
           {...config}
           value={value}
           onChange={onchange}
           name={label}
+          onBlur={onblur}
         />
       );
       break;
   }
 
   return (
-      <div className="form__group">
-        <label className="form__label">{label}:</label>
-        {inputElement}
-      </div>
+    <div className="form__group">
+      <label className="form__label">{label}:</label>
+      {inputElement}
+      {msg !== "" && (
+        <span
+          style={{
+            color: "red",
+            display: "inline-block",
+            textAlign: "start",
+            fontSize: "12px",
+            width: "100%",
+          }}
+        >
+          {msg}
+        </span>
+      )}
+    </div>
   );
 };
 
