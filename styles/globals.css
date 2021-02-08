@@ -33,6 +33,22 @@ body {
   text-transform: uppercase;
 }
 
+.link {
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+.link__login {
+  color: red;
+}
+.link__login, .link__forgot {
+  font-weight: 600;
+  margin-top: 1rem;
+  align-self: flex-end;
+}
+.link__forgot {
+  color: #5C9210;
+}
+
 .mb-bg {
   margin-bottom: 6rem;
 }
@@ -107,6 +123,7 @@ body {
   font-size: 1.4rem;
   margin-bottom: 1rem;
   color: white;
+  width: 100%;
 }
 
 .form {
@@ -118,8 +135,6 @@ body {
 .form__container {
   width: 80%;
   margin: 2.5rem auto 0 auto;
-  display: flex;
-  flex-direction: column;
 }
 .form__group {
   margin-bottom: 2.5rem;
@@ -129,9 +144,11 @@ body {
 .form__group > *:not(:last-child) {
   margin-bottom: 1rem;
 }
+.form__group:last-child {
+  grid-column: 1/-1;
+}
 .form__label {
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: 1.1rem;
 }
 .form__input {
   padding: 1rem;
@@ -257,7 +274,6 @@ body {
   width: 600px;
   max-width: 90%;
 }
-
 .register {
   width: 100%;
   margin-top: 12.5rem;
@@ -271,6 +287,16 @@ body {
 .register__box {
   width: 800px;
   max-width: 90%;
+}
+.register__form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 50px;
+}
+.register__button {
+  text-align: center;
+  width: 80%;
+  margin: auto;
 }
 
 /*# sourceMappingURL=globals.css.map */

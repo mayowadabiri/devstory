@@ -150,9 +150,7 @@ const Register = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setClicked(true);
-    console.log(registerForm);
-    console.log(formValid);
-    console.log(clicked);
+ 
   };
 
   let formArray = [];
@@ -200,8 +198,12 @@ const Register = () => {
             <div className="register__box">
               <form className="form">
                 <h2 className="title">Register</h2>
-                <div className="form__container">
+                <div
+                  className={["form__container", "register__form"].join(" ")}
+                >
                   {form}
+                </div>
+                <div className="register__button">
                   <Button onclick={handleSubmit}>Register</Button>
                 </div>
               </form>

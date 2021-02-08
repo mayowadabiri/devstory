@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "../components/button";
 import Input from "../components/input";
 import Layout from "../components/layout";
+import Anchor from "../components/link";
 import { handleBlur, inputChangeHandler } from "../helpers/handler";
 import { username, password } from "../helpers/validation";
 
@@ -47,9 +48,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setClicked(true);
-    console.log(loginForm);
-    console.log(formValid);
-    console.log(clicked);
+
   };
 
   let formArray = [];
@@ -100,6 +99,7 @@ const Login = () => {
                 <div className="form__container">
                   {form}
                   <Button onclick={handleSubmit}>Login</Button>
+                  <Anchor link={"/forgot-password"} extra={"link__login"}>Forgot Password?</Anchor>
                 </div>
               </form>
             </div>

@@ -7,8 +7,6 @@
   &__container {
     width: 80%;
     margin: 2.5rem auto 0 auto;
-    display: flex;
-    flex-direction: column;
   }
 
   &__group {
@@ -19,11 +17,14 @@
     & > *:not(:last-child) {
       margin-bottom: 1rem;
     }
+    &:last-child{
+        grid-column: 1 / -1;
+    }
   }
 
   &__label {
-    font-size: 1.4rem;
-    font-weight: 500;
+    font-size: 1.1rem;
+    // font-weight: 500;
   }
 
   &__input {
