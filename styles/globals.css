@@ -14,14 +14,14 @@ html {
 
 body {
   box-sizing: border-box;
-  height: 100%;
-}
-body > * {
-  height: 100%;
 }
 
 .layout {
   height: 100%;
+}
+
+.main {
+  margin-top: 80px;
 }
 
 .mb-bg {
@@ -95,7 +95,8 @@ body > * {
   top: 0;
   left: 0;
   height: 80px;
-  box-shadow: 10px 10px 30px #ccc;
+  box-shadow: 10px 10px -10px #ccc;
+  z-index: 999;
 }
 .header__container {
   width: 90%;
@@ -151,6 +152,28 @@ body > * {
 .nav__link:hover {
   background-color: black;
   color: white;
+}
+
+.landing {
+  height: calc(100vh - 80px);
+  position: relative;
+}
+.landing__container {
+  width: 100%;
+  height: 100%;
+}
+.landing__content {
+  position: absolute;
+  bottom: 0;
+}
+.landing__text {
+  color: white;
+  font-weight: bolder;
+  font-size: 4rem;
+  letter-spacing: 20px;
+  text-transform: uppercase;
+  line-break: normal;
+  text-align: center;
 }
 
 /*# sourceMappingURL=globals.css.map */

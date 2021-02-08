@@ -3,7 +3,7 @@ import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <div style={{ height: "100%" }}>
+    <div>
       <Head>
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link

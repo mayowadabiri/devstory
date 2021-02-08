@@ -5,7 +5,8 @@
   top: 0;
   left: 0;
   height: 80px;
-  box-shadow: 10px 10px 30px #ccc;
+  box-shadow: 10px 10px -10px #ccc;
+  z-index: 999;
   &__container {
     width: 90%;
     height: 100%;
