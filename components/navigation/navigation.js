@@ -1,17 +1,17 @@
 // @ts-nocheck
-import NavigationItem from "./navigationItem"
+import NavigationItem from "./navigationItem";
 
 const Navigation = () => {
-    return (
-        <nav className="nav">
-            <ul className="nav__list"> 
-                <NavigationItem>Posts</NavigationItem>
-                <NavigationItem>Create</NavigationItem>
-                <NavigationItem>Login</NavigationItem>
-                <NavigationItem extra="nav__link-reg">Register</NavigationItem>
-            </ul>
-        </nav>
-    )
-}
+  return (
+    <nav className="nav">
+      <ul className="nav__list">
+        <NavigationItem link="/posts">Posts</NavigationItem>
+        <NavigationItem link="/create">Create</NavigationItem>
+        <NavigationItem link="/login">Login</NavigationItem>
+        <NavigationItem link="/register">Register</NavigationItem>
+      </ul>
+    </nav>
+  );
+};
 
-export default Navigation
+export default Navigation;

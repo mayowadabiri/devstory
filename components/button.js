@@ -1,9 +1,5 @@
-import Link from "next/link"
+import Link from "next/link";
 
-
-// const button = () => {
-    
-// }
-// <div>
-
-// </div>
+export const Button = ({ children }) => {
+  return <button className="button">{children}</button>;
+};
