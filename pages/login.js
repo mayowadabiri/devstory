@@ -1,6 +1,7 @@
 // @ts-nocheck
 import Head from "next/head";
 import { useState } from "react";
+import { Button } from "../components/button";
 import Input from "../components/input";
 import Layout from "../components/layout";
 
@@ -20,7 +21,7 @@ const Login = () => {
       label: "Password",
       elementConfig: {
         type: "password",
-        placeholder: "Password must be maximum of 8 characters long",
+        placeholder: "Password",
       },
       value: "",
     },
@@ -52,8 +53,12 @@ const Login = () => {
         <div className="login">
           <div className="login__container">
             <form className="form">
-              <h2 className="title">Login</h2>
-              <div className="form__container">{form}</div>
+              <h2 className="title">Welcome Back</h2>
+              <div className="form__container">
+                {form}
+
+                <Button>Login</Button>
+              </div>
             </form>
           </div>
         </div>
