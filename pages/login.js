@@ -87,7 +87,7 @@ const Login = () => {
   return (
     <div>
       <Head>
-        <title>Login</title>
+        <title>Login - Dev Story</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* <Layout> */}

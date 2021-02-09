@@ -33,9 +33,7 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     setClicked(true);
-    // console.log(loginForm);
-    // console.log(formValid);
-    // console.log(clicked);
+
   };
 
   let formArray = [];
@@ -74,10 +72,9 @@ const Login = () => {
   return (
     <div>
       <Head>
-        <title>Login</title>
+        <title>Forgot Password - Dev Story</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {/* <Layout> */}
         <div className="login">
           <div className="login__container">
             <div className="login__box">
@@ -94,7 +91,6 @@ const Login = () => {
             </div>
           </div>
         </div>
-      {/* </Layout> */}
     </div>
   );
 };

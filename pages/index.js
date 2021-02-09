@@ -23,11 +23,10 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <title>Dev Story</title>
+        <title>Home - Dev Story</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <Layout> */}
       <div className="landing">
         <div className="landing__container">
           <Image src="/speed.png" alt="speed" layout="fill" />
@@ -49,7 +48,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-      {/* </Layout>/ */}
     </div>
   );
 }
