@@ -6,13 +6,13 @@
 .pnp.js
 
 /.env.local
-
+/constants/pbk.js
 # testing
 /coverage
 
 # next.js
 /.next/
-/out/
+/out/gi
 
 # production
 /build
