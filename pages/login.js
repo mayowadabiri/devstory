@@ -1,6 +1,7 @@
 // @ts-nocheck
 import Head from "next/head";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { Button } from "../components/button";
 import Input from "../components/input";
 import Anchor from "../components/link";
@@ -13,7 +14,9 @@ import GoogleLogin from "react-google-login";
 
 const googleID = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 // const githubID = process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID;
+
 const Login = () => {
+  const router = useRouter();
   const [loginForm, setLoginForm] = useState({
     username: {
       elementType: "input",
@@ -66,7 +69,8 @@ const Login = () => {
       try {
         const response = await authUrl.post("/signin", login);
         setIsLoading(false);
-        console.log(response.data);
+        localStorage.setItem("token", response.data.token);
+        router.push("/blogs")
       } catch (error) {
         console.log(error.response);
         setIsLoading(false);
@@ -87,7 +91,6 @@ const Login = () => {
         console.log(error);
         setIsLoading(false);
       }
-
     }
   };
 
@@ -123,7 +126,7 @@ const Login = () => {
       msg={form.config.errorMsg}
     />
   ));
-
+console.log(form)
   return (
     <div>
       <Head>
