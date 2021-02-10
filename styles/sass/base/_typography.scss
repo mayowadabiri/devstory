@@ -12,7 +12,7 @@
   font-size: 1.1rem;
 
   &__login {
-    color: red;
+    color: $color-red;
   }
 
   &__login,
@@ -25,4 +25,12 @@
   &__forgot {
     color: $color-primary;
   }
+}
+
+.error {
+  color: $color-red;
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
 }

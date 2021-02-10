@@ -3,7 +3,6 @@ import Head from "next/head";
 import { useState } from "react";
 import { Button } from "../components/button";
 import Input from "../components/input";
-import Layout from "../components/layout";
 import { handleBlur, inputChangeHandler } from "../helpers/handler";
 import {
   URLChecker,
@@ -13,6 +12,9 @@ import {
   password,
   username,
 } from "../helpers/validation";
+
+import { authUrl } from "../constants/baseurls";
+import ModalComponent from "../hoc/modal";
 
 const Register = () => {
   const [registerForm, setRegisterForm] = useState({
@@ -67,6 +69,10 @@ const Register = () => {
       },
       validations: [URLChecker],
       value: "",
+      blur: false,
+      touched: false,
+      isValid: true,
+      errorMsg: "",
     },
     github: {
       elementType: "input",
@@ -79,7 +85,7 @@ const Register = () => {
       validations: [URLChecker],
       blur: false,
       touched: false,
-      isValid: false,
+      isValid: true,
       errorMsg: "",
     },
     linkedIn: {
@@ -93,7 +99,7 @@ const Register = () => {
       validations: [URLChecker],
       blur: false,
       touched: false,
-      isValid: false,
+      isValid: true,
       errorMsg: "",
     },
     gender: {
@@ -144,12 +150,32 @@ const Register = () => {
   });
 
   const [formValid, setFormValid] = useState(false);
-
   const [clicked, setClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     setClicked(true);
+    const register = {};
+    for (let key in registerForm) {
+      register[key] = registerForm[key].value;
+    }
+    if (!formValid) {
+      event.preventDefault();
+    } else {
+      setIsLoading(true);
+      try {
+        const response = await authUrl.post("/signup", register);
+        setIsLoading(false);
+        console.log(response);
+      } catch (error) {
+        setErrorMsg(error.response.data.message);
+        setIsLoading(false);
+      }
+      setIsLoading(true);
+      setIsLoading(false);
+    }
   };
 
   let formArray = [];
@@ -191,11 +217,13 @@ const Register = () => {
         <title>Register - Dev Story</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {isLoading && <ModalComponent loadingMessage="Registering" />}
       <div className="register mb-md">
         <div className="register__container">
           <div className="register__box">
             <form className="form">
               <h2 className="title">Register</h2>
+              {errorMsg !== "" && <p className="error">{errorMsg}</p>}
               <div className={["form__container", "register__form"].join(" ")}>
                 {form}
               </div>
