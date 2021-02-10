@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
   useEffect(async () => {
     const token = localStorage.getItem("token");
     const doMatch = await verifyToken(token);
-    console.log(doMatch);
+    // console.log(doMatch);
     if (!doMatch) {
       router.push("/")
     }

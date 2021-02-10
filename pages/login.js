@@ -126,7 +126,6 @@ const Login = () => {
       msg={form.config.errorMsg}
     />
   ));
-console.log(form)
   return (
     <div>
       <Head>

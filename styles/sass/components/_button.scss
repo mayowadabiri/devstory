@@ -2,11 +2,15 @@
   cursor: pointer;
   padding: 1rem 3rem;
   background-color: $color-primary;
-  border-radius: $border-radius;
+  border-radius: 10px;
   outline: none;
   border: none;
   font-size: 1.4rem;
   margin-bottom: 1rem;
   color: white;
-  width: 100%;
+  // width: 100%;
+
+  &-red{
+    background-color: red !important;
+  }
 }

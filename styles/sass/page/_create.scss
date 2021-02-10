@@ -1,0 +1,100 @@
+.create {
+  width: 100%;
+  height: calc(100vh - 80px);
+
+  &__container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__form {
+    width: 100%;
+    &-container {
+      width: 50%;
+      margin: auto;
+    }
+    &-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-label {
+      font-size: 3rem;
+      font-family: $font-primary;
+      margin-bottom: 3rem;
+
+      &-image {
+        font-size: 2rem;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+
+    &-input,
+    &-textarea {
+      font-family: $font-primary;
+      border-radius: 10px 20px 20px 10px;
+      display: block;
+      padding: 2rem;
+      position: relative;
+      z-index: 9999;
+      border: 1px dashed $color-primary;
+      &::-webkit-input-placeholder {
+        color: gray;
+        text-transform: capitalize;
+        letter-spacing: 1px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    &-input {
+      text-transform: uppercase;
+      font-size: 3rem;
+
+      &-image {
+        display: none;
+      }
+    }
+    &-textarea {
+      max-height: 440px;
+      min-height: 440px;
+      min-width: 500px;
+      max-width: 100%;
+      font-size: 1rem;
+      text-align: justify;
+      line-height: 35px;
+    }
+
+    &-image {
+      border: 1px dashed $color-primary;
+      height: 500px;
+      max-height: 100%;
+      display: flex;
+      place-items: center;
+      justify-content: center;
+    }
+    &-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 40%);
+      //   grid-auto-rows: repeat(auto-fill, 1fr);
+      column-gap: 50px;
+      row-gap: 50px;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: flex-end;
+
+    &-content {
+      justify-content: space-between;
+    }
+  }
+}
