@@ -5,6 +5,7 @@ import { useContext } from "react";
 
 const Navigation = () => {
   const token = useContext(TokenContext);
+  console.log(token)
   // console.log(token)
   return (
     <nav className="nav">

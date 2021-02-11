@@ -1,8 +1,17 @@
+// @ts-nocheck
+import { useEffect } from "react";
 import "../styles/globals.css";
 import Head from "next/head";
 import Layout from "../components/layout";
+import axios from "axios";
 
 function MyApp({ Component, pageProps }) {
+  useEffect(async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const verified = await axios.post("pages/api/verify.js", { token });
+    } catch (error) {}
+  }, []);
   return (
     <div>
       <Head>
