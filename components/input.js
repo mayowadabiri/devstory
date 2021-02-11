@@ -11,11 +11,9 @@ const Input = ({
   onblur,
   msg,
 }) => {
-  let error;
   let inputClasses = ["form__input"];
   if ((blur && !isValid) || (!isValid && !formIsValid && clicked)) {
     inputClasses.push("form__invalid");
-    error = msg;
   } else if (isValid && blur) {
     inputClasses.push("form__valid");
   }

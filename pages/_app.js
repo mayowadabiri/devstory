@@ -1,17 +1,53 @@
 // @ts-nocheck
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../styles/globals.css";
 import Head from "next/head";
 import Layout from "../components/layout";
 import axios from "axios";
+import TokenContext from "../tokenContext";
+import useSwr from "swr";
+let fetcher;
+if (typeof window !== "undefined") {
+  const token = localStorage.getItem("token");
+  fetcher = (url) => axios.post(url, { token }).then((res) => res);
+} else {
+  console.log(false);
+}
 
 function MyApp({ Component, pageProps }) {
-  useEffect(async () => {
-    const token = localStorage.getItem("token");
-    try {
-      const verified = await axios.post("pages/api/verify.js", { token });
-    } catch (error) {}
+  const [isVerified, setIsVerified] = useState();
+
+  const { data } = useSwr("/api/verify", fetcher);
+  useEffect(() => {
+    if (!data) {
+      setIsVerified(true);
+    } else {
+      setIsVerified(false);
+    }
   }, []);
+  // useEffect(() => {
+  //   if (data !== "undefined") {
+  //     if (data.data.code === 200) {
+  //       setIsVerified(true);
+  //     } else {
+  //       setIsVerified(false);
+  //     }
+  //   }
+  // }, [data]);
+  // useEffect(() => {
+  //   console.log(data);
+  // }, [])
+  // useEffect(async () => {
+  //   const token = localStorage.getItem("token");
+  //   const res = await axios.post("pages/api/verify", { token });
+  //   console.log(res.data);
+  //   if (res.data.code === 200) {
+  //     setIsVerified(true);
+  //   } else {
+  //     setIsVerified(false);
+  //   }
+  // }, []);
+
   return (
     <div>
       <Head>
@@ -25,9 +61,11 @@ function MyApp({ Component, pageProps }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
         />
       </Head>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <TokenContext.Provider value={isVerified}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </TokenContext.Provider>
     </div>
   );
 }

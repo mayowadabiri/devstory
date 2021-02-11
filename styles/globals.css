@@ -51,7 +51,6 @@ body {
 
 .error {
   color: red;
-  text-align: center;
   margin-top: 1rem;
   font-size: 1.1rem;
   font-weight: 500;
@@ -465,19 +464,26 @@ body {
 }
 .create__form-image {
   border: 1px dashed #5C9210;
+  border-radius: 5px;
   height: 500px;
   max-height: 100%;
   display: flex;
   place-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 9999;
 }
 .create__form-images {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 40%);
+  grid-template-columns: repeat(auto-fit, 10%);
   column-gap: 50px;
   row-gap: 50px;
   width: 100%;
   height: 100%;
+}
+.create__form-invalid {
+  border: 1px dashed red !important;
+  background-color: #fda49a !important;
 }
 .create__button {
   display: flex;

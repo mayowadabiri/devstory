@@ -8,6 +8,25 @@ import { handleBlur, inputChangeHandler } from "../../helpers/handler";
 const Content = ({ formType, updateFn, changePage }) => {
   const [formValid, setFormValid] = useState(false);
   const { content } = formType;
+  const [clicked, setClicked] = useState(false);
+
+  const inputClasses = ["create__form-input, create__form-textarea"];
+  if (formType["content"].blur && !formType["content"].isValid) {
+    inputClasses.push("create__form-invalid");
+  }
+  if (!formType["content"].isValid && clicked) {
+  
+    inputClasses.push("create__form-invalid");
+  }
+
+  const clickHandler = (event) => {
+    event.preventDefault();
+    setClicked(true);
+    console.log(formType);
+    if (formType["content"].isValid && clicked) {
+      changePage(event, "image");
+    }
+  };
 
   return (
     <div className="animate__animated animate__fadeInLeft animate__slow">
@@ -16,7 +35,7 @@ const Content = ({ formType, updateFn, changePage }) => {
           {content.label}
         </label>
         <textarea
-          className="create__form-textarea"
+          className={inputClasses.join(" ")}
           id="content"
           value={content.value}
           placeholder={content.elementConfig.placeholder}
@@ -32,6 +51,7 @@ const Content = ({ formType, updateFn, changePage }) => {
           onBlur={() => handleBlur("content", formType, updateFn)}
         ></textarea>
       </div>
+      {content.errorMsg !== "" && <p className="error">{content.errorMsg}</p>}
       <div className="create__button create__button-content mt-md">
         <Button
           extra={"button-red"}
@@ -39,7 +59,7 @@ const Content = ({ formType, updateFn, changePage }) => {
         >
           Back
         </Button>
-        <Button onclick={(event) => changePage(event, "image")}>Content</Button>
+        <Button onclick={clickHandler}>Next</Button>
       </div>
     </div>
   );

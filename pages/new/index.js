@@ -18,7 +18,7 @@ const Create = () => {
       isValid: false,
       touched: false,
       validations: [required],
-      errorMessage: " ",
+      errorMsg: "",
     },
   });
   const [contentForm, setContentForm] = useState({
@@ -33,12 +33,13 @@ const Create = () => {
       isValid: false,
       touched: false,
       validations: [checkLength],
-      errorMessage: "",
+      errorMsg: "",
     },
   });
 
   const [item, setItem] = useState("title");
   const handleChange = (event, next) => {
+    console.log(next)
     event.preventDefault();
     if (next === "title") {
       setItem("title");
@@ -56,12 +57,9 @@ const Create = () => {
   const imageChangeHandler = (event) => {
     console.log(typeof event.target.files);
     let urls = [];
-    // const url = URL.createObjectURL(event.target.files);
-    // console.log(url)
     for (let x = 0; x < event.target.files.length; x++) {
       urls.push(URL.createObjectURL(event.target.files[x]));
     }
-    // console.log(urls)
     setImage(urls);
   };
   return (
@@ -91,7 +89,7 @@ const Create = () => {
               )}
               {item === "image" && (
                 <ImageLoader
-                  // changePage={handleChange}
+                  changePage={handleChange}
                   // formType={contentForm}
                   // updateFn={setContentForm}
                   onchange={imageChangeHandler}

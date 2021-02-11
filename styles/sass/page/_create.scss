@@ -72,20 +72,27 @@
 
     &-image {
       border: 1px dashed $color-primary;
+      border-radius: $border-radius;
       height: 500px;
       max-height: 100%;
       display: flex;
       place-items: center;
       justify-content: center;
+      position: relative;
+    z-index: 9999;
     }
     &-images {
       display: grid;
-      grid-template-columns: repeat(auto-fill, 40%);
-      //   grid-auto-rows: repeat(auto-fill, 1fr);
+      grid-template-columns: repeat(auto-fit, 10%);
       column-gap: 50px;
       row-gap: 50px;
       width: 100%;
       height: 100%;
+    }
+
+    &-invalid{
+      border: 1px dashed red !important;
+      background-color: #fda49a !important;
     }
   }
 

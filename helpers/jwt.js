@@ -9,7 +9,7 @@ export const verifyToken = async (token) => {
     });
     return isMatch;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return false;
   }
 };

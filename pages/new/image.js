@@ -1,4 +1,7 @@
-const ImageLoader = ({ onchange, value }) => {
+// @ts-nocheck
+import { Button } from "../../components/button";
+
+const ImageLoader = ({ onchange, value, changePage }) => {
   return (
     <div className="animate__animated animate__fadeInLeft animate__slow">
       <div className="create__form-image">
@@ -29,6 +32,15 @@ const ImageLoader = ({ onchange, value }) => {
             </div>
           </>
         )}
+      </div>
+      <div className="create__button create__button-content mt-md">
+        <Button
+          extra={"button-red"}
+          onclick={(event) => changePage(event, "content")}
+        >
+          Back
+        </Button>
+        <Button onclick={(event) => changePage(event, "image")}>Post</Button>
       </div>
     </div>
   );
