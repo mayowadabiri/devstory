@@ -73,13 +73,13 @@
     &-image {
       border: 1px dashed $color-primary;
       border-radius: $border-radius;
-      height: 500px;
+      height: 600px;
       max-height: 100%;
       display: flex;
       place-items: center;
       justify-content: center;
       position: relative;
-    z-index: 9999;
+      z-index: 9999;
     }
     &-images {
       // display: grid;
@@ -90,7 +90,7 @@
       // height: 100%;
     }
 
-    &-invalid{
+    &-invalid {
       border: 1px dashed red !important;
       background-color: #fda49a !important;
     }

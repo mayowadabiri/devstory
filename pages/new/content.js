@@ -21,10 +21,10 @@ const Content = ({ formType, updateFn, changePage }) => {
   const clickHandler = (event) => {
     event.preventDefault();
     setClicked(true);
-    // if (formType["content"].isValid && clicked) {
+    if (formType["content"].isValid && clicked) {
       changePage(event, "image");
     }
-  // };
+  };
 
   return (
     <div className="animate__animated animate__fadeInLeft animate__slow">

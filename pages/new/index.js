@@ -1,10 +1,11 @@
 // @ts-nocheck
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { checkLength, required } from "../../helpers/validation";
 import Content from "./content";
 import ImageLoader from "./image";
 import Title from "./title";
+import { blogUrl } from "../../constants/baseurls";
 
 const Create = () => {
   const [titleForm, setTitleForm] = useState({
@@ -52,10 +53,18 @@ const Create = () => {
     }
   };
 
+  const [token, setToken] = useState();
+  const [submit, setSubmit] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setToken(token);
+  }, []);
   const [image, setImage] = useState({
     value: "",
     errorMsg: "",
     isValid: false,
+    file: null,
   });
 
   const imageChangeHandler = (event) => {
@@ -69,6 +78,7 @@ const Create = () => {
         src: URL.createObjectURL(file),
         isValid: true,
         errorMsg: "",
+        file: event.target.files[0],
       });
     } else {
       setImage({
@@ -78,9 +88,36 @@ const Create = () => {
     }
   };
 
-  // const removeImageHandler = () => {
-  //   setImage("")
-  // }
+  const removeImageHandler = () => {
+    setImage({
+      errorMsg: "",
+      isValid: false,
+      file: null,
+      value: "",
+    });
+  };
+
+  const submitPostHandler = async () => {
+    const formData = new FormData();
+    formData.append("title", titleForm.title.value);
+    formData.append("content", contentForm.content.value);
+    formData.append("image", image.file);
+    if (image.isValid) {
+      setSubmit(true)
+      try {
+        const res = await blogUrl.post("/post-blog", formData, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        console.log(res.data);
+        setSubmit(false)
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
   return (
     <div>
       <Head>
@@ -109,11 +146,11 @@ const Create = () => {
               {item === "image" && (
                 <ImageLoader
                   changePage={handleChange}
-                  // formType={contentForm}
-                  // updateFn={setContentForm}
+                  submitPost={submitPostHandler}
                   onchange={imageChangeHandler}
-                  onclick={() => setImage("")}
+                  onclick={removeImageHandler}
                   image={image}
+                  submit={submit}
                 />
               )}
             </div>
