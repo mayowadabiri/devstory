@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Head from "next/head";
 import { useState } from "react";
 import { checkLength, required } from "../../helpers/validation";
@@ -39,7 +40,6 @@ const Create = () => {
 
   const [item, setItem] = useState("title");
   const handleChange = (event, next) => {
-    console.log(next)
     event.preventDefault();
     if (next === "title") {
       setItem("title");
@@ -52,16 +52,35 @@ const Create = () => {
     }
   };
 
-  const [value, setImage] = useState([]);
+  const [image, setImage] = useState({
+    value: "",
+    errorMsg: "",
+    isValid: false,
+  });
 
   const imageChangeHandler = (event) => {
-    console.log(typeof event.target.files);
-    let urls = [];
-    for (let x = 0; x < event.target.files.length; x++) {
-      urls.push(URL.createObjectURL(event.target.files[x]));
+    const file = event.target.files[0];
+    if (
+      file.type === "image/jpeg" ||
+      file.type === "image/png" ||
+      file.type === "image/jpg"
+    ) {
+      setImage({
+        src: URL.createObjectURL(file),
+        isValid: true,
+        errorMsg: "",
+      });
+    } else {
+      setImage({
+        errorMsg: "Error: File must be of type jpg, jpeg or png",
+        isValid: false,
+      });
     }
-    setImage(urls);
   };
+
+  // const removeImageHandler = () => {
+  //   setImage("")
+  // }
   return (
     <div>
       <Head>
@@ -93,7 +112,8 @@ const Create = () => {
                   // formType={contentForm}
                   // updateFn={setContentForm}
                   onchange={imageChangeHandler}
-                  value={value}
+                  onclick={() => setImage("")}
+                  image={image}
                 />
               )}
             </div>

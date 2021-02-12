@@ -21,10 +21,9 @@ const Title = ({ formType, updateFn, changePage }) => {
   const clickHandler = (event) => {
     event.preventDefault();
     setClicked(true);
-    console.log(formType);
-    if (formType["title"].isValid && clicked) {
+    // if (formType["title"].isValid && clicked) {
       changePage(event, "content");
-    }
+    // }
   };
 
   return (

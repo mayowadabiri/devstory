@@ -1,35 +1,35 @@
 // @ts-nocheck
 import { Button } from "../../components/button";
 
-const ImageLoader = ({ onchange, value, changePage }) => {
+const ImageLoader = ({ onchange, image, changePage, onclick }) => {
+  const { src, isValid, errorMsg } = image;
+
   return (
     <div className="animate__animated animate__fadeInLeft animate__slow">
       <div className="create__form-image">
-        {value.length < 1 ? (
-          <div className="create__form-group">
-            <label className="create__form-label-image" htmlFor="image">
-              Click to upload images
-            </label>
-            <input
-              multiple
-              onChange={onchange}
-              className="create__form-input-image"
-              type="file"
-              id="image"
-            />
-          </div>
+        {!src && !isValid ? (
+          <>
+            <div className="create__form-group">
+              <label className="create__form-label-image" htmlFor="image">
+                Click to upload one image
+              </label>
+              <input
+                onChange={onchange}
+                className="create__form-input-image"
+                type="file"
+                id="image"
+              />
+              {errorMsg !== "" && (
+                <p className="error error__create">{errorMsg}</p>
+              )}
+            </div>
+          </>
         ) : (
           <>
-            <div className="create__form-images">
-              {value.map((img, index) => (
-                <img
-                  src={img}
-                  alt={"Imagejidsuidls"}
-                  className="image"
-                  key={index}
-                />
-              ))}
-            </div>
+            <img src={src} alt="image" className="image" />
+            <span onClick={onclick} className="cancel">
+              X
+            </span>
           </>
         )}
       </div>

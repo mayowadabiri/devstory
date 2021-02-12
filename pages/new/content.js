@@ -15,18 +15,16 @@ const Content = ({ formType, updateFn, changePage }) => {
     inputClasses.push("create__form-invalid");
   }
   if (!formType["content"].isValid && clicked) {
-  
     inputClasses.push("create__form-invalid");
   }
 
   const clickHandler = (event) => {
     event.preventDefault();
     setClicked(true);
-    console.log(formType);
-    if (formType["content"].isValid && clicked) {
+    // if (formType["content"].isValid && clicked) {
       changePage(event, "image");
     }
-  };
+  // };
 
   return (
     <div className="animate__animated animate__fadeInLeft animate__slow">
