@@ -37,7 +37,7 @@
       font-family: $font-primary;
       border-radius: 10px 20px 20px 10px;
       display: block;
-      padding: 2rem;
+      padding: 1.22rem;
       position: relative;
       z-index: 9999;
       border: 1px dashed $color-primary;
@@ -54,7 +54,7 @@
 
     &-input {
       text-transform: uppercase;
-      font-size: 3rem;
+      font-size: 2rem;
 
       &-image {
         display: none;

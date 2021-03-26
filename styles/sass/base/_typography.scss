@@ -30,20 +30,18 @@
 .error {
   color: $color-red;
   // text-align: center;
-  margin-top: 1rem;
+  // margin-top: 1rem;
   font-size: 1.1rem;
   font-weight: 500;
-
-
 }
 
-.image{
+.image {
   height: 100%;
   width: 100%;
-  object-fit:cover;
+  object-fit: cover;
 }
 
-.cancel{
+.cancel {
   position: absolute;
   top: 0;
   right: 0;
@@ -59,3 +57,18 @@
   color: white;
   cursor: pointer;
 }
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.head{
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+
+}
+

@@ -9,13 +9,14 @@
 @import "components/form";
 @import "components/loader";
 @import "components/modal";
-
+@import "components/recent";
 
 @import "layout/header";
 @import "layout/navigation";
 
-
 @import "page/landing";
 @import "page/login";
 @import "page/register";
-@import "page/create"
+@import "page/create";
+@import "page/blogs";
+@import "page/single"

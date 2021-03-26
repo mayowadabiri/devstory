@@ -49,7 +49,11 @@ const Content = ({ formType, updateFn, changePage }) => {
           onBlur={() => handleBlur("content", formType, updateFn)}
         ></textarea>
       </div>
-      {content.errorMsg !== "" && <p className="error">{content.errorMsg}</p>}
+      <div className="flex">
+        <p>{ content.value.length}/1000</p>
+        {<p className="error  ">Must be of 1000 characters</p>}
+        {/* {content.errorMsg !== "" && <p className="error">{content.errorMsg}</p>} */}
+      </div>
       <div className="create__button create__button-content mt-md">
         <Button
           extra={"button-red"}

@@ -141,7 +141,7 @@ const Login = () => {
               {errorMsg !== "" && <p className="error">{errorMsg}</p>}
               <div className="form__container">
                 {form}
-                <Button onclick={handleSubmit}>Login</Button>
+                <Button onclick={handleSubmit} extra="form__button">Login</Button>
 
                 <div className="socials">
                   <div>

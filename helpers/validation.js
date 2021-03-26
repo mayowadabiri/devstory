@@ -49,7 +49,7 @@ export const confirmPassword = (cPassword, password) => {
 export const checkLength = (value) => {
   return {
     isTrue: value.length > 1000,
-    msg: value.length > 1000 ? "" : "must be more than 1000 letters",
+    msg: value.length > 1000 ? "" : "must be more than 1000 characters",
   };
 };
 

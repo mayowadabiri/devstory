@@ -7,6 +7,9 @@
   &__container {
     width: 80%;
     margin: 2.5rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+// align-items: center;
   }
 
   &__group {
@@ -49,5 +52,9 @@
   &__invalid {
     border: 1px solid red !important;
     background-color: #fda49a;
+  }
+
+  &__button{
+    align-self: center !important
   }
 }

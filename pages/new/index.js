@@ -6,8 +6,10 @@ import Content from "./content";
 import ImageLoader from "./image";
 import Title from "./title";
 import { blogUrl } from "../../constants/baseurls";
+import {useRouter} from "next/router";
 
 const Create = () => {
+  const router = useRouter()
   const [titleForm, setTitleForm] = useState({
     title: {
       elementType: "input",
@@ -53,13 +55,13 @@ const Create = () => {
     }
   };
 
-  const [token, setToken] = useState();
+  // const [token, setToken] = useState();
   const [submit, setSubmit] = useState(false);
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    setToken(token);
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   setToken(token);
+  // }, []);
   const [image, setImage] = useState({
     value: "",
     errorMsg: "",
@@ -103,15 +105,17 @@ const Create = () => {
     formData.append("content", contentForm.content.value);
     formData.append("image", image.file);
     if (image.isValid) {
-      setSubmit(true)
+      setSubmit(true);
       try {
+        const token = localStorage.getItem("token");
         const res = await blogUrl.post("/post-blog", formData, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         console.log(res.data);
-        setSubmit(false)
+        setSubmit(false);
+        router.push("/blogs")
       } catch (error) {
         console.log(error);
       }

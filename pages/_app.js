@@ -25,28 +25,7 @@ function MyApp({ Component, pageProps }) {
       setIsVerified(false);
     }
   }, []);
-  // useEffect(() => {
-  //   if (data !== "undefined") {
-  //     if (data.data.code === 200) {
-  //       setIsVerified(true);
-  //     } else {
-  //       setIsVerified(false);
-  //     }
-  //   }
-  // }, [data]);
-  // useEffect(() => {
-  //   console.log(data);
-  // }, [])
-  // useEffect(async () => {
-  //   const token = localStorage.getItem("token");
-  //   const res = await axios.post("pages/api/verify", { token });
-  //   console.log(res.data);
-  //   if (res.data.code === 200) {
-  //     setIsVerified(true);
-  //   } else {
-  //     setIsVerified(false);
-  //   }
-  // }, []);
+ 
 
   return (
     <div>

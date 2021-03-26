@@ -168,7 +168,7 @@ const Register = () => {
       try {
         const response = await authUrl.post("/signup", register);
         setIsLoading(false);
-        console.log(response);
+         router.push("/login");
       } catch (error) {
         setErrorMsg(error.response.data.message);
         setIsLoading(false);
